@@ -1,6 +1,6 @@
 import { useState } from "react";
 import users from "../datas/users"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignIn = ({onLogin}) => {
     const [formData, setFormData] = useState({
@@ -82,6 +82,11 @@ const SignIn = ({onLogin}) => {
             {/* {result === "success" && (
                 <p style={{color: "blue"}}>환영합니다.</p>
             )} */}
+
+            <p>
+                아직 계정이 없으신가요? <Link to="/signup">회원가입</Link>
+            </p>
+
             {result === "fail" && (
                 <p style={{color: "red"}}>아이디 또는 비밀번호가 일치하지 않습니다.</p>
             )}

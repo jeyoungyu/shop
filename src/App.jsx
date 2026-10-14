@@ -8,6 +8,7 @@ import ProductInfo from './products/ProductInfo'
 import AddProduct from './products/AddProduct'
 import SignIn from './users/SiginIn'
 import { useState } from 'react'
+import SignUp from './users/SignUp'
 
 function App() {
   // 로그인 상태 관리
@@ -19,10 +20,10 @@ function App() {
   // 로그인 함수
   const handleLogin = (username) => {
     setIsLoggedIn(true);
-    setUsername(username); //로그인한 사용자 상태 저장
+    setUsername(username); //로그인한 사용자 상태(ID) 저장
   }
 
-  //로그아웃 핸들러 함수
+  // 로그아웃 핸들러 함수
   const handleLogout = () => {
     setIsLoggedIn(false);
   }
@@ -31,9 +32,10 @@ function App() {
     <>
       <section className="app">
         <BrowserRouter>
-          <Header isLoggedIn={isLoggedIn}
-          username={username}
-          onLogout ={handleLogout}
+          <Header 
+            isLoggedIn={isLoggedIn} 
+            username={username}
+            onLogout={handleLogout}
           />
           <div className='container'>
             <Routes>
@@ -42,6 +44,7 @@ function App() {
               <Route path='/products/:id' element={<ProductInfo />} />
               <Route path='/add-product' element={<AddProduct />} />
               <Route path='/signin' element={<SignIn onLogin={handleLogin} />} />
+              <Route path='/signup' element={<SignUp />} />
             </Routes>
           </div>
         </BrowserRouter>
